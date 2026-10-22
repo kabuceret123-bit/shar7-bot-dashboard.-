@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>SHAR7 Bot | لوحة التحكم</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: #f4f6ff;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 7%;
+      border-bottom: 1px solid #242b43;
+      background: #101629;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #8b9cff;
+    }
+
+    .status {
+      color: #67e8a5;
+      font-size: 13px;
+    }
+
+    main {
+      width: min(1000px, 90%);
+      margin: 55px auto;
+    }
+
+    .welcome {
+      margin-bottom: 30px;
+    }
+
+    .welcome h1 {
+      font-size: clamp(25px, 5vw, 38px);
+      margin-bottom: 12px;
+    }
+
+    .welcome p {
+      color: #aab3ce;
+      line-height: 1.8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #141c32;
+      border: 1px solid #293451;
+      border-radius: 16px;
+      padding: 25px;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      border-color: #8292ff;
+      transform: translateY(-3px);
+    }
+
+    .card .icon {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .card h2 {
+      font-size: 19px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #aab3ce;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .notice {
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 12px;
+      background: #111a30;
+      border: 1px solid #293451;
+      color: #bfc8e2;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: #77819e;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">SHAR7 Bot</div>
+    <div class="status">● لوحة التحكم</div>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h1>مرحبًا بك في SHAR7 Bot</h1>
+      <p>
+        منصة واحدة لإدارة بوتات ديسكورد وتنظيم إعدادات السيرفر.
+        هذه هي النسخة الأولية من لوحة التحكم.
+      </p>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <div class="icon">🛡️</div>
+        <h2>الإشراف</h2>
+        <p>مساحة مستقبلية لإعداد أوامر الإدارة والتنبيهات.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🎫</div>
+        <h2>التذاكر</h2>
+        <p>إعداد نظام الدعم والشكاوى داخل سيرفرك.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">👋</div>
+        <h2>الترحيب</h2>
+        <p>إعداد رسائل الترحيب للأعضاء الجدد.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">📊</div>
+        <h2>الإحصائيات</h2>
+        <p>مساحة مستقبلية لعرض نشاط البوت والسيرفر.</p>
+      </article>
+    </section>
+
+    <div class="notice">
+      <strong>ملاحظة:</strong>
+      هذه واجهة تصميم أولية فقط. ربط ديسكورد وحفظ الإعدادات
+      وتفعيل الخصائص يحتاج إلى برمجة خلفية آمنة.
+    </div>
+  </main>
+
+  <footer>
+    SHAR7 Technologies © 2026
+  </footer>
+</body>
+</html>

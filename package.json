@@ -1,0 +1,16 @@
+
+{
+  "name": "shar7-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SHAR7 Discord Bot Dashboard",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "bot": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.22.1",
+    "express": "^5.1.0"
+  }
+}

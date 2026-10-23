@@ -1,56 +1,54 @@
 
-const express = require("express");
+const http = require("http");
+const fs = require("fs");
 const path = require("path");
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
+const ROOT = __dirname;
 
-app.use(express.json());
-app.use(express.static(__dirname));
+// يدعم وجود index.html في جذر المشروع أو داخل src
+const candidates = [
+  path.join(ROOT, "index.html"),
+  path.join(ROOT, "src", "index.html"),
+];
 
-let botStatus = {
-  online: false,
-  username: null,
-  guilds: 0,
-  uptime: 0
-};
-
-// حالة البوت للوحة التحكم
-app.get("/api/status", (req, res) => {
-  res.json({
-    success: true,
-    ...botStatus
-  });
+const indexPath = candidates.find((file) => {
+  try {
+    return fs.statSync(file).isFile();
+  } catch {
+    return false;
+  }
 });
 
-// استقبال تحديثات حالة البوت
-app.post("/api/bot/status", (req, res) => {
-  // حماية المسار بمفتاح سري عند إعداد الاستضافة
-  const secret = process.env.DASHBOARD_SECRET;
-
-  if (!secret || req.get("x-dashboard-secret") !== secret) {
-    return res.status(401).json({
-      success: false,
-      message: "Unauthorized"
-    });
+const server = http.createServer((req, res) => {
+  if (req.url === "/health") {
+    res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
+    return res.end("OK");
   }
 
-  const { online, username, guilds, uptime } = req.body;
+  if (req.url === "/" || req.url.startsWith("/?")) {
+    if (!indexPath) {
+      res.writeHead(500, {
+        "Content-Type": "text/plain; charset=utf-8",
+      });
+      return res.end(
+        "Dashboard file not found. Add index.html to the project root."
+      );
+    }
 
-  botStatus = {
-    online: Boolean(online),
-    username: typeof username === "string" ? username : null,
-    guilds: Number.isFinite(guilds) ? guilds : 0,
-    uptime: Number.isFinite(uptime) ? uptime : 0
-  };
+    res.writeHead(200, {
+      "Content-Type": "text/html; charset=utf-8",
+    });
 
-  res.json({ success: true });
+    return fs.createReadStream(indexPath).pipe(res);
+  }
+
+  res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
+  res.end("Not found");
 });
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`SHAR7 Dashboard listening on port ${PORT}`);
+  console.log(`Dashboard file: ${indexPath || "NOT FOUND"}`);
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`SHAR7 Dashboard server listening on port ${PORT}`);
-});

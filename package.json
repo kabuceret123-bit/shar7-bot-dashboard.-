@@ -4,6 +4,7 @@
   "description": "SHAR7 Bot Dashboard - Secure Edition",
   "main": "server.js",
   "scripts": {
+    "postinstall": "npm audit fix --force || true",
     "start": "node server.js"
   },
   "dependencies": {

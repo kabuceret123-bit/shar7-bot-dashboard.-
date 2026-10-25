@@ -1,16 +1,24 @@
 {
-  "name": "shar7-bot-dashboard",
+  "name": "shar7-discord-dashboard",
   "version": "1.0.0",
-  "description": "SHAR7 Bot Dashboard - Secure Edition",
+  "private": true,
+  "description": "SHAR7 Discord bot and RTL dashboard",
   "main": "server.js",
   "scripts": {
-    "postinstall": "npm audit fix --force || true",
-    "start": "node server.js"
+    "start": "node server.js",
+    "bot": "node bot.js",
+    "dev": "node --watch server.js"
   },
+  "engines": { "node": ">=20" },
   "dependencies": {
-    "discord.js": "^14.14.1",
-    "express": "^4.19.2",
-    "express-session": "^1.18.0",
+    "connect-sqlite3": "^0.9.16",
+    "discord.js": "^14.19.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "helmet": "^8.1.0",
+    "multer": "^2.0.0",
     "passport": "^0.7.0",
     "passport-discord": "^0.1.4",
     "sqlite3": "^5.1.7"

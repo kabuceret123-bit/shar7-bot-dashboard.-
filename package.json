@@ -1,7 +1,7 @@
 {
   "name": "shar7-bot-dashboard",
   "version": "1.0.0",
-  "description": "SHAR7 Bot Dashboard - Pro Edition",
+  "description": "SHAR7 Bot Dashboard - Secure Edition",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
